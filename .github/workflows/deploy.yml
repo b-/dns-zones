@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Install DNSControl
         uses: gacts/install-dnscontrol@v1
         #with:
         #  version: 3.20.0 # `latest` by default, but you can set a specific version to install
-
 
       - name: DNSControl push
         run: dnscontrol push # any dnscontrol command can be executed
