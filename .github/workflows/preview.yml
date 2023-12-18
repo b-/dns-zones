@@ -24,7 +24,7 @@ jobs:
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
 
       - name: Preview pull request comment
-        uses: unsplash/comment-on-pr@v1.3.0
+        uses: unsplash/comment-on-pr@v1.3.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
