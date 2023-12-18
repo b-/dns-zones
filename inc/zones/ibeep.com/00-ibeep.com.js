@@ -1,7 +1,7 @@
 // See https://docs.dnscontrol.org/advanced-features/cli-variables
 CLI_DEFAULTS({
   "bind": "false",
-  "axfr": "false"
+  "axfr": "true"
 });
 
 
