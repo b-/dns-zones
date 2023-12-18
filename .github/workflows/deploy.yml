@@ -24,8 +24,31 @@ jobs:
           tags: tag:github-runner
 
       - name: DNSControl push
-        run: make push
+        id: dnscontrol_push
+        run: |
+            echo "push_comment<<EOF" | tee -a "$GITHUB_OUTPUT"
+            make cd                     | tee -a "$GITHUB_OUTPUT"
+            echo 'EOF'                  | tee -a "$GITHUB_OUTPUT"
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
           TSIG_CI: ${{ secrets.TSIG_CI }}
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: push output
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+              ```
+              push output:
+              ${{ steps.dnscontrol_push.outputs.push_comment }}
+              ```
+          edit-mode: replace
