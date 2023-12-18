@@ -5,20 +5,18 @@ CLI_DEFAULTS({
 });
 
 
-D("ibeep.com", REG_CHANGEME,
-  DnsProvider(DSP_CLOUDFLARE),
-  // DnsProvider(DSP_BIND),
-  // DnsProvider(AXFRDDNS),
-  DefaultTTL(1)
+D("ibeep.com", REG_CHANGEME
+  , DnsProvider(DSP_CLOUDFLARE)
+  , DefaultTTL(1)
 )
 if (bind=="true") {
-  D_EXTEND("ibeep.com",
-    DnsProvider(DSP_BIND)
+  D_EXTEND("ibeep.com"
+    , DnsProvider(DSP_BIND, 0)
   )
 }
 
 if (axfr=="true") {
-  D_EXTEND("ibeep.com",
-    DnsProvider(AXFRDDNS)
+  D_EXTEND("ibeep.com"
+    , DnsProvider(AXFRDDNS,0)
   )
 }
