@@ -32,8 +32,16 @@ test:
 preview: dnsconfig.js
 	dnscontrol preview
 
+.PHONY: preview-with-axfr
+preview-with-axfr: dnsconfig.js
+	dnscontrol preview -v axfr=true
+
 .PHONY: push
 push:
 	dnscontrol push
+
+.PHONY: push-with-axfr
+push:
+	dnscontrol push -v axfr=true
 
 
