@@ -22,7 +22,7 @@ types-dnscontrol.d.ts:
 	dnscontrol write-types
 
 sample.env:
-	<.env perl -pe 's/^(.*?)=.*/\1="\1"/g' | tee sample.env
+	<.env perl -pe 's/^([^#]*?)=.*/\1="\1"/g' | tee sample.env
 
 .PHONY: test
 test:
@@ -41,7 +41,5 @@ push:
 	dnscontrol push
 
 .PHONY: push-with-axfr
-push:
+push-with-axfr: dnsconfig.js
 	dnscontrol push -v axfr=true
-
-

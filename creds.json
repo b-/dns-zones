@@ -10,7 +10,7 @@
   "axfrddns": {
     "TYPE": "AXFRDDNS",
     "nameservers": "tdns1.shark-perch.ts.net",
-    "transfer-key": "$TSIG_TDNS2",
-    "update-key": "$TSIG_TDNS2"
+    "transfer-key": "$TSIG_CI",
+    "update-key": "$TSIG_CI"
   }
 }
