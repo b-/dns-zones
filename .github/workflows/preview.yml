@@ -3,19 +3,26 @@ name: Preview
 on: pull_request
 
 jobs:
+  install-dnscontrol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gacts/install-dnscontrol@v1
+        #with:
+        #  version: 3.20.0 # `latest` by default, but you can set a specific version to install
   preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: DNSControl preview
-        uses: koenrh/dnscontrol-action@v3
+        #uses: koenrh/dnscontrol-action@v3
+        #with:
+        #  args: preview
+        run: dnscontrol preview
         id: dnscontrol_preview
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
-        with:
-          args: preview
 
       - name: Preview pull request comment
         uses: unsplash/comment-on-pr@v1.3.0
@@ -27,4 +34,3 @@ jobs:
             ${{ steps.dnscontrol_preview.outputs.preview_comment }}
             ```
           check_for_duplicate_msg: true
-

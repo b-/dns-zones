@@ -6,16 +6,20 @@ on:
       - main
 
 jobs:
+  install-dnscontrol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gacts/install-dnscontrol@v1
+        #with:
+        #  version: 3.20.0 # `latest` by default, but you can set a specific version to install
   push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: DNSControl push
-        uses: koenrh/dnscontrol-action@v3
+        run: dnscontrol push # any dnscontrol command can be executed
+        #uses: koenrh/dnscontrol-action@v3
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
-
-        with:
-          args: push
