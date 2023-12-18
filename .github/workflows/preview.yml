@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: mkdir zones
 
       - name: Preview
         uses: koenrh/dnscontrol-action@v3
