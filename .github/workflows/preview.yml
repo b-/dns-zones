@@ -12,7 +12,8 @@ jobs:
         uses: koenrh/dnscontrol-action@v3
         id: dnscontrol_preview
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
+          CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
         with:
           args: preview
 
