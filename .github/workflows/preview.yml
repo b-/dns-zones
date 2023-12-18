@@ -26,8 +26,7 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
-          TSIG_TRANSFER: ${{ secrets.TSIG_TRANSFER }}
-          TSIG_UPDATE: ${{ secrets.TSIG_UPDATE }}
+          TSIG_CI: ${{ secrets.TSIG_CI }}
 
       - name: Preview pull request comment
         uses: unsplash/comment-on-pr@v1.3.1
