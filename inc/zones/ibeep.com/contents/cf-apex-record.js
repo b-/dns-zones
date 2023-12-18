@@ -1,9 +1,10 @@
-if (bind != "true") {
-  D_EXTEND("ibeep.com",
-    ALIAS("@", "apex-loadbalancer.netlify.com.")
-  )
-} else {
-  D_EXTEND("ibeep.com",
-    IGNORE("@","CNAME")
-  )
-}
+D_EXTEND("ibeep.com"
+  , IGNORE("@","CNAME")
+  , IGNORE("tdns1.ibeep.com.","*","*")
+)
+D("ibeep.com!axfrddns", REG_CHANGEME
+  , IGNORE("tdns1")
+)
+D("ibeep.com!cloudflare", REG_CHANGEME
+  , ALIAS("@", "apex-loadbalancer.netlify.com.")
+)
