@@ -9,7 +9,10 @@ all: sample.env # dnsconfig.js
 ci: clean all
 
 .PHONY: pr
-pr: clean all preview types-dnscontrol.d.ts
+pr: ci preview
+
+.PHONY: cd
+cd: ci push
 
 .PHONY: clean
 clean:
