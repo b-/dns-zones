@@ -16,9 +16,17 @@ jobs:
         #with:
         #  version: 3.20.0 # `latest` by default, but you can set a specific version to install
 
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:github-runner
+
       - name: DNSControl push
-        run: dnscontrol push # any dnscontrol command can be executed
-        #uses: koenrh/dnscontrol-action@v3
+        run: dnscontrol push -v axfr=true
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
+          TSIG_TRANSFER: ${{ secrets.TSIG_TRANSFER }}
+          TSIG_UPDATE: ${{ secrets.TSIG_UPDATE }}
