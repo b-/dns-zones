@@ -1,0 +1,32 @@
+---
+name: Test
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run ESLint
+        uses: koenrh/actions/eslint@master
+        with:
+          args: dnsconfig.js
+
+  dnscontrol:
+    name: DNSControl
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Preview
+        uses: koenrh/dnscontrol-action@v3
+        env:
+          CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
+          CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
+        with:
+          args: preview

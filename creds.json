@@ -1,0 +1,14 @@
+{
+  "bind": {
+    "TYPE": "BIND"
+  },
+  "cloudflare": {
+    "TYPE": "CLOUDFLAREAPI",
+    "accountid": "$CLOUDFLARE_ACCOUNTID",
+    "apitoken": "$CLOUDFLARE_APITOKEN"
+  },
+  "axfrddns": {
+    "TYPE": "AXFRDDNS",
+    "nameservers": "tdns1.ibeep.com"
+  }
+}

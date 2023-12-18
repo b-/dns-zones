@@ -1,0 +1,1 @@
+var AXFRDDNS = NewDnsProvider("axfrddns")
