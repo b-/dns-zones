@@ -21,8 +21,11 @@ jobs:
           tags: tag:github-runner
 
       - name: DNSControl preview
-        run: dnscontrol preview -v axfr=true
         id: dnscontrol_preview
+        run: |
+            echo "preview_comment<<EOF" | tee -a "$GITHUB_OUTPUT"
+            dnscontrol preview -v axfr=true  | tee -a "$GITHUB_OUTPUT"
+            echo 'EOF'                       | tee -a "$GITHUB_OUTPUT"
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
