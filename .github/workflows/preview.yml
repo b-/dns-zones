@@ -27,14 +27,22 @@ jobs:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
           TSIG_CI: ${{ secrets.TSIG_CI }}
-
-      - name: Preview pull request comment
-        uses: unsplash/comment-on-pr@v1.3.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
         with:
-          msg: |
-            ```
-            ${{ steps.dnscontrol_preview.outputs.preview_comment }}
-            ```
-          check_for_duplicate_msg: true
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: preview output
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+              ```
+              preview output:
+              ${{ steps.dnscontrol_preview.outputs.preview_comment }}
+              ```
+          edit-mode: replace
