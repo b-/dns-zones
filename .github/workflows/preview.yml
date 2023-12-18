@@ -24,8 +24,8 @@ jobs:
         id: dnscontrol_preview
         run: |
             echo "preview_comment<<EOF" | tee -a "$GITHUB_OUTPUT"
-            make preview           | tee -a "$GITHUB_OUTPUT"
-            echo 'EOF'                       | tee -a "$GITHUB_OUTPUT"
+            make pr                     | tee -a "$GITHUB_OUTPUT"
+            echo 'EOF'                  | tee -a "$GITHUB_OUTPUT"
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
