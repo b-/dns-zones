@@ -25,7 +25,7 @@ D_EXTEND("ibeep.com"
 	, A("evo.pve", "45.58.127.14")
 	, CNAME("*.evo", "evo.ibeep.com.")
 
-	, A("tdns2", "129.153.146.130") // Public Technitium DNS server on Oracle Cloud (TODO: update)
+	, A("tdns2", "129.153.146.130") // Public Technitium DNS server on Oracle Cloud
 	, IGNORE("tdns1", "A") // managed elsewhere
 
 	///////////////
@@ -33,13 +33,6 @@ D_EXTEND("ibeep.com"
 	, CNAME("www", "neon-tulumba-d89507.netlify.app.")
 	, CNAME("blog", "cname.vercel-dns.com.")
 
-	///////////////
-	// mediabox lan records
-	, CNAME("auth", "mediabox.ibeep.com.")
-	, CNAME("bin", "mediabox.ibeep.com.")
-	, CNAME("links", "mediabox.ibeep.com.")
-	, CNAME("mediabox", "mediabox.home.ibeep.com.")
-	, CNAME("*.mediabox", "mediabox.ibeep.com.")
 
 	///////////////
 	// email records
