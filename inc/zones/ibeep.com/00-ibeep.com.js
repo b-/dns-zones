@@ -17,6 +17,7 @@ if (bind=="true") {
 
 if (axfr=="true") {
   D_EXTEND("ibeep.com"
-    , DnsProvider(AXFRDDNS,0)
+    , DnsProvider(TDNS1_P,0)
+    , DnsProvider(TDNS2_P,0)
   )
 }

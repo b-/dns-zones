@@ -18,7 +18,7 @@
   "tdns1": {
     "TYPE": "AXFRDDNS",
     "nameservers": "tdns1.ibeep.com,tdns2.ibeep.com",
-    "master": "tdns1.shark-perch-ts.net",
+    "master": "tdns1.shark-perch.ts.net",
     "transfer-key": "$TSIG_CI",
     "update-key": "$TSIG_CI"
   },
