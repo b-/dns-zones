@@ -36,7 +36,7 @@ preview: dnsconfig.js
 	dnscontrol preview
 
 .PHONY: cipreview
-preview: dnsconfig.js
+cipreview: dnsconfig.js
 	dnscontrol --no-colors preview
 
 .PHONY: preview-without-axfr
@@ -48,7 +48,7 @@ push:
 	dnscontrol push
 
 .PHONY: cipush
-push:
+cipush:
 	dnscontrol --no-colors push
 
 .PHONY: push-without-axfr
