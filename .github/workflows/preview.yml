@@ -22,10 +22,7 @@ jobs:
 
       - name: DNSControl preview
         id: dnscontrol_preview
-        run: |
-            echo "preview_comment<<EOF" | tee -a "$GITHUB_OUTPUT"
-            make pr                     | tee -a "$GITHUB_OUTPUT"
-            echo 'EOF'                  | tee -a "$GITHUB_OUTPUT"
+        run: bash ./ci.sh preview
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
