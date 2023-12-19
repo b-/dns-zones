@@ -43,6 +43,6 @@ jobs:
           body: |
               ```
               preview output:
-              ${{ steps.dnscontrol_preview.outputs.preview_comment }}
+              ${{ steps.dnscontrol_preview.outputs.stdout }}
               ```
           edit-mode: replace
