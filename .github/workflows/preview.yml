@@ -22,7 +22,8 @@ jobs:
 
       - name: DNSControl preview
         id: dnscontrol_preview
-        run: bash ./ci.sh preview
+        run: ./ci.sh preview
+
         env:
           CLOUDFLARE_ACCOUNTID: ${{ secrets.CLOUDFLARE_ACCOUNTID }}
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}

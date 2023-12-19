@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -euo pipefail
+#set -euo pipefail
+#set -x
 
 OUTFILE="${GITHUB_OUTPUT:="$(mktemp)"}"
 
@@ -8,7 +9,7 @@ OUTFILE="${GITHUB_OUTPUT:="$(mktemp)"}"
 _write() {
     OUTPUT_VAR="${1}"
     shift
-if [[ ! -z "${*}" ]] ; then
+if [[ -n "${*}" ]] ; then
     tee -a "${OUTFILE}"<<END_HEREDOC
 
 ${OUTPUT_VAR}<<EOF
@@ -42,11 +43,51 @@ catch() {
 }
 
 preview(){
-    run dnscontrol --no-colors preview
+    dnscontrol --no-colors preview
+}
+do_verbose(){
+    state=$(set +o)
+    set -x
+    "${@}"
+    eval "$state"
+}
+steamroll(){
+    "${@}" || true
+}
+
+subcommand(){
+    first="${1}"
+    shift
+    "${first}" "${@}"
+}
+
+axfr-push-loop(){
+    i=0
+    RETRIES=5
+    if ! dnscontrol --no-colors preview --providers "${@}" --expect-no-changes ; then
+        until dnscontrol --no-colors preview --providers "${@}" --expect-no-changes ; do
+            echo "FAILED. Retry (${i} of ${RETRIES})"
+            [[ ${i} -eq ${RETRIES} ]] && exit "${RETRIES}"
+            _=$((i++))
+            # steamroll because we're checking and retrying anyway
+            steamroll dnscontrol --no-colors push --providers "${@}"
+        done
+        dnscontrol --no-colors preview --providers "${@}" --expect-no-changes ; exit $?
+    fi
+}
+cipreview(){
+    run preview
+}
+
+cipush(){
+    run push
 }
 
 push(){
-    run dnscontrol --no-colors push
+    dnscontrol --no-colors push || true
+    axfr-push-loop tdns1
+    axfr-push-loop tdns2
+
 }
 
 COMMAND="${1}"
