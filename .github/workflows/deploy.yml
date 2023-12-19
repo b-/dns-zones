@@ -34,13 +34,13 @@ jobs:
           CLOUDFLARE_APITOKEN: ${{ secrets.CLOUDFLARE_APITOKEN }}
           TSIG_CI: ${{ secrets.TSIG_CI }}
 
-      - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-              ```
-              push output:
-              ${{ steps.dnscontrol_push.outputs.push_comment }}
-              ```
-          edit-mode: replace
+#      - name: Create or update comment
+#        uses: peter-evans/create-or-update-comment@v3
+#        with:
+#          issue-number: ${{ github.event.pull_request.number }}
+#          body: |
+#              ```
+#              push output:
+#              ${{ steps.dnscontrol_push.outputs.push_comment }}
+#              ```
+#          edit-mode: replace
