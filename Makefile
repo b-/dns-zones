@@ -16,7 +16,7 @@ cd: ci cipush
 
 .PHONY: clean
 clean:
-	rm -f sample.env draft.js zones/*.zone # dnsconfig.js
+	@rm -f sample.env draft.js zones/*.zone
 
 # dnsconfig.js:
 # 	bash ./glob_incs.sh > dnsconfig.js
@@ -25,7 +25,7 @@ types-dnscontrol.d.ts:
 	dnscontrol write-types
 
 sample.env:
-	<.env perl -pe 's/^([^#]*?)=.*/\1="\1"/g' | tee sample.env
+	@<.env perl -pe 's/^([^#]*?)=.*/\1="\1"/g' | tee sample.env
 
 .PHONY: test
 test:
