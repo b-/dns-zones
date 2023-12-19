@@ -4,15 +4,15 @@ _list:
 
 .PHONY: all
 all: sample.env # dnsconfig.js
-	
+
 .PHONY: ci
 ci: clean all
 
 .PHONY: pr
-pr: ci preview
+pr: ci cipreview
 
 .PHONY: cd
-cd: ci push
+cd: ci cipush
 
 .PHONY: clean
 clean:
@@ -35,6 +35,10 @@ test:
 preview: dnsconfig.js
 	dnscontrol preview
 
+.PHONY: cipreview
+cipreview: dnsconfig.js
+	dnscontrol --no-colors preview
+
 .PHONY: preview-without-axfr
 preview-with-axfr: dnsconfig.js
 	dnscontrol preview -v axfr=false
@@ -42,6 +46,10 @@ preview-with-axfr: dnsconfig.js
 .PHONY: push
 push:
 	dnscontrol push
+
+.PHONY: cipush
+cipush:
+	dnscontrol --no-colors push
 
 .PHONY: push-without-axfr
 push-with-axfr: dnsconfig.js
