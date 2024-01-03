@@ -3,7 +3,7 @@ D_EXTEND("ibeep.com"
 	// private lan records
 	, A("deb-dev.macpro.pve", "192.168.30.113")
 	, A("home-wan-nat", "192.168.12.1", TTL(42800))
-	, A("dn42.macpro.pve", "172.23.217.90")
+	, A("dn42.macpro.pve.home", "172.23.217.90")
 	, A("dn42.vyos.home", "172.23.217.65", TTL(3600))
 	, A("vyos.home", "172.23.217.65", TTL(42800))
 
@@ -15,8 +15,8 @@ D_EXTEND("ibeep.com"
 	// hypervisor things
 	, CNAME("*.cloud", "cloud.ibeep.com.")
 	, CNAME("cloud", "ibeep.com.")
+	, CNAME("dn42.macpro.pve", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("dn42.macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
-	, CNAME("dn42.macpro.pve.home", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("macpro.pve", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
 
