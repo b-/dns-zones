@@ -16,6 +16,7 @@ D_EXTEND("ibeep.com"
 	, CNAME("*.cloud", "cloud.ibeep.com.")
 	, CNAME("cloud", "ibeep.com.")
 	, CNAME("dn42.macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
+	, CNAME("dn42.macpro.pve.home", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("macpro.pve", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
 
