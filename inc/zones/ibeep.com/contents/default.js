@@ -60,6 +60,7 @@ D_EXTEND("ibeep.com"
 	, TXT("_atproto", "did=did:plc:fvgyuzwvn5jac6z4dedztdzx")
 	, TXT("@", "oci-domain-verification=5sMTB8TMCj01LpqaioMRRslg9wQD0RFwUzqxHlwCIySv2")
 	, TXT("@", "keybase-site-verification=ETl8o2A9sJFg3seiGRyUdGfP6EDURyJYy14zT-gTgzo")
+	, TXT("e", "MS=ms34099336", TTL(3600))
 	, TXT("oci-domain-verification", "sMTB8TMCj01LpqaioMRRslg9wQD0RFwUzqxHlwCIySv2")
 
 	/////////////////
