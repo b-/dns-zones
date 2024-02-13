@@ -29,12 +29,15 @@ D("ibeep.com!tdns1", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_IGNORE
   , SPLIT_OVERRIDES
+  , DHCP_IGNORE
 )
 D("ibeep.com!tdns2", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_IGNORE
+  , DHCP_IGNORE
 )
 D("ibeep.com!cloudflare", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_NETLIFY
+  , DHCP_IGNORE
 )
