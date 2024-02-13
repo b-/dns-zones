@@ -1,17 +1,25 @@
  //D_EXTEND("ibeep.com"
 
 // split-horizon overrides
-var MEDIABOX_SPLIT_OVERRIDES = [
+var SPLIT_OVERRIDES = [
   , A("home-ddns","172.23.217.75") // split-horizon override for reverse
+  , A("ci-upload-ddns","192.168.30.12") // split-horizon override for reverse
 ]
 
- var APEX_IGNORE=[
+var APEX_IGNORE=[
   , IGNORE("@","CNAME")
- ]
+]
+
+// ignore DHCP hostnames
+var DHCP_IGNORE=[
+  , IGNORE("*.dhcp", "A")
+]
+
 D_EXTEND("ibeep.com"
 	, IGNORE("*-ddns","A") // managed by ddns updater tools
 	, IGNORE("tdns1","AAAA") // managed by ddns updater tools
   , APEX_IGNORE
+  , DHCP_IGNORE
 )
 
  var APEX_NETLIFY = [
@@ -20,13 +28,17 @@ D_EXTEND("ibeep.com"
 D("ibeep.com!tdns1", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_IGNORE
-  , MEDIABOX_SPLIT_OVERRIDES
+  , SPLIT_OVERRIDES
+  , DHCP_IGNORE
 )
 D("ibeep.com!tdns2", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_IGNORE
+  , DHCP_IGNORE
 )
 D("ibeep.com!cloudflare", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_NETLIFY
+  , DHCP_IGNORE
+  , CNAME("ci-upload-ddns", "home-ddns.ibeep.com.")
 )

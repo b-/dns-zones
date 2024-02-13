@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #set -euo pipefail
 #set -x
+set -u # die if any unset
 
 OUTFILE="${GITHUB_OUTPUT:="$(mktemp)"}"
 
@@ -64,15 +65,15 @@ subcommand(){
 axfr-push-loop(){
     i=0
     RETRIES=5
-    if ! dnscontrol --no-colors preview --providers "${@}" --expect-no-changes ; then
-        until dnscontrol --no-colors preview --providers "${@}" --expect-no-changes ; do
+    if ! dnscontrol --no-colors preview --full --providers "${@}" --expect-no-changes ; then
+        until dnscontrol --no-colors preview --full --providers "${@}" --expect-no-changes ; do
             echo "FAILED. Retry (${i} of ${RETRIES})"
             [[ ${i} -eq ${RETRIES} ]] && exit "${RETRIES}"
             _=$((i++))
             # steamroll because we're checking and retrying anyway
-            steamroll dnscontrol --no-colors push --providers "${@}"
+            steamroll dnscontrol --no-colors push --full --providers "${@}"
         done
-        dnscontrol --no-colors preview --providers "${@}" --expect-no-changes ; exit $?
+        dnscontrol --no-colors preview --full --providers "${@}" --expect-no-changes ; exit $?
     fi
 }
 cipreview(){
