@@ -6,9 +6,15 @@ var SPLIT_OVERRIDES = [
   , A("ci-upload-ddns","192.168.30.12") // split-horizon override for reverse
 ]
 
- var APEX_IGNORE=[
-  , IGNORE("@","CNAME")
+var APEX_IGNORE=[
+, IGNORE("@","CNAME")
+]
+
+// ignore DHCP hostnames
+var DHCP_IGNORE=[
+    , IGNORE("*.dhcp.ibeep.com")
  ]
+
 D_EXTEND("ibeep.com"
 	, IGNORE("*-ddns","A") // managed by ddns updater tools
 	, IGNORE("tdns1","AAAA") // managed by ddns updater tools
