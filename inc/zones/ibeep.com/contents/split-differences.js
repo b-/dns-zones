@@ -12,7 +12,7 @@ var APEX_IGNORE=[
 
 // ignore DHCP hostnames
 var DHCP_IGNORE=[
-    , IGNORE("*.dhcp.ibeep.com")
+    , IGNORE("*.dhcp.ibeep.com", "A")
  ]
 
 D_EXTEND("ibeep.com"
