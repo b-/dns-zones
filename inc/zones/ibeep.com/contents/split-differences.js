@@ -3,7 +3,7 @@
 // split-horizon overrides
 var SPLIT_OVERRIDES = [
   , A("home-ddns","172.23.217.75") // split-horizon override for reverse
-  , A("ci-upload-ddns","192.168.30.12") // split-horizon override for reverse
+  , CNAME("ci-upload-ddns", "ci-upload.v30.dhcp.ibeep.com.") // split-horizon override for ci-upload
 ]
 
 var APEX_IGNORE=[
@@ -13,6 +13,8 @@ var APEX_IGNORE=[
 // ignore DHCP hostnames
 var DHCP_IGNORE=[
   , IGNORE("*.dhcp", "A")
+  // ignore pointers to DHCP hostnames
+  , IGNORE("*", "CNAME", "*.dhcp.ibeep.com.")
 ]
 
 D_EXTEND("ibeep.com"
@@ -40,5 +42,6 @@ D("ibeep.com!cloudflare", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_NETLIFY
   , DHCP_IGNORE
+  // point ci-upload-ddns to home-ddns
   , CNAME("ci-upload-ddns", "home-ddns.ibeep.com.")
 )
