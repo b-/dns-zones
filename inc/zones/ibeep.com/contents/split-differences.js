@@ -19,6 +19,7 @@ D_EXTEND("ibeep.com"
 	, IGNORE("*-ddns","A") // managed by ddns updater tools
 	, IGNORE("tdns1","AAAA") // managed by ddns updater tools
   , APEX_IGNORE
+  , DHCP_IGNORE
 )
 
  var APEX_NETLIFY = [
