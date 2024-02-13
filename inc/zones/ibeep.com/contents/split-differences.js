@@ -7,13 +7,13 @@ var SPLIT_OVERRIDES = [
 ]
 
 var APEX_IGNORE=[
-, IGNORE("@","CNAME")
+  , IGNORE("@","CNAME")
 ]
 
 // ignore DHCP hostnames
 var DHCP_IGNORE=[
-    , IGNORE("*.dhcp.ibeep.com", "A")
- ]
+  , IGNORE("*.dhcp", "A")
+]
 
 D_EXTEND("ibeep.com"
 	, IGNORE("*-ddns","A") // managed by ddns updater tools
@@ -40,4 +40,5 @@ D("ibeep.com!cloudflare", REG_CHANGEME
   , {no_ns:'true'}
   , APEX_NETLIFY
   , DHCP_IGNORE
+  , CNAME("ci-upload-ddns", "home-ddns.ibeep.com.")
 )
