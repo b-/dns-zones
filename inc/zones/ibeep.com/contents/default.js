@@ -6,6 +6,15 @@ D_EXTEND("ibeep.com"
 	, A("dn42.macpro.pve.home", "172.23.217.90")
 	, A("dn42.vyos.home", "172.23.217.65", TTL(3600))
 	, A("vyos.home", "172.23.217.65", TTL(42800))
+	, A("dn42.evo.pve", "172.23.217.99")
+
+	//////////////////////
+	// pc cluster
+	, A("n1.pc.ibeep.com", "192.168.12.51", TTL(42800))
+	, A("n2.pc.ibeep.com", "192.168.12.52", TTL(42800))
+	, A("n3.pc.ibeep.com", "192.168.12.53", TTL(42800))
+	, A("n4.pc.ibeep.com", "192.168.12.54", TTL(42800))
+	, A("n5.pc.ibeep.com", "192.168.12.55", TTL(42800))
 
 	, A("kms", "172.23.217.72", TTL(3600))
 	, SRV("_vlmcs._tcp.home", 0, 0, 1688, "kms.ibeep.com.")
@@ -24,7 +33,6 @@ D_EXTEND("ibeep.com"
 	// public internet IPs
 	, A("evo", "45.58.127.14") // Miami Proxmox VPS, sponsored by Evolution-Host
 	, A("evo.pve", "45.58.127.14")
-	, A("dn42.evo.pve", "172.23.217.99")
 	, CNAME("*.evo", "evo.ibeep.com.")
 
 	, A("tdns2", "129.153.146.130") // Public Technitium DNS server on Oracle Cloud
