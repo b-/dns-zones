@@ -33,8 +33,8 @@ D_EXTEND("ibeep.com"
 
 	///////////////////////
 	// public internet IPs
-	, A("evo", "45.58.127.14") // Miami Proxmox VPS, sponsored by Evolution-Host
-	, A("evo.pve", "45.58.127.14")
+	, A("evo", "103.195.100.158") // Miami Proxmox VPS, sponsored by Evolution-Host
+	, A("evo.pve", "103.195.100.158")
 	, CNAME("*.evo", "evo.ibeep.com.")
 
 	, A("tdns2", "129.153.146.130") // Public Technitium DNS server on Oracle Cloud
