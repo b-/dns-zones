@@ -32,12 +32,6 @@ D_EXTEND("ibeep.com"
 	, CNAME("macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
 	, A("pve-5.pve", "192.168.1.5")
 
-	///////////////////////
-	// public internet IPs
-	, A("evo", "103.195.100.158") // Miami Proxmox VPS, sponsored by Evolution-Host
-	, A("evo.pve", "103.195.100.158")
-	, CNAME("*.evo", "evo.ibeep.com.")
-
 	, A("oci-01.r", "132.145.193.131")
 
 	, A("tdns2", "129.153.146.130") // Public Technitium DNS server on Oracle Cloud
@@ -48,23 +42,6 @@ D_EXTEND("ibeep.com"
 	, CNAME("www", "neon-tulumba-d89507.netlify.app.")
 	, CNAME("blog", "cname.vercel-dns.com.")
 
-
-	///////////////
-	// email records
-	, MX("@", 10, "mx.zoho.com.")
-	, MX("@", 20, "mx2.zoho.com.")
-	, MX("@", 50, "mx3.zoho.com.")
-	, TXT("@", "v=spf1 include:zoho.com ~all")
-	, TXT("zoho._domainkey", "k=rsa; t=y; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCDL7MrQep4Rz+T1al3nGgAfNgG7VeteDnHxJA2MdUqk++eK2ds6ppURjnkhaI8sIJowvF09NEiXiCzR01hfM7FaSvs3KRelzRWS0Z3lzobv3blImCwCAanIGCFFaHWyKf7FlYzhWc6RqORoOBA68ibO9VFX1tYaAs+F9oCt26tJwIDAQAB")
-	, TXT("@", "zoho-verification=zb15326403.zmverify.zoho.com")
-	, TXT("_dmarc", "v=DMARC1; p=none;")
-
-	// sendgrid
-	, CNAME("em2135", "u37122549.wl050.sendgrid.net.")
-	, CNAME("s1._domainkey", "s1.domainkey.u37122549.wl050.sendgrid.net.")
-	, CNAME("s2._domainkey", "s2.domainkey.u37122549.wl050.sendgrid.net.")
-	, CNAME("url2071", "sendgrid.net.")
-	, CNAME("37122549", "sendgrid.net.")
 
 	////////////////
 	// verification things
