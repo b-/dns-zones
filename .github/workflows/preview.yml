@@ -47,5 +47,6 @@ jobs:
               ```
               preview output:
               ${{ steps.dnscontrol_preview.outputs.stdout }}
+              ${{ steps.dnscontrol_preview.outputs.stderr }}
               ```
           edit-mode: replace
