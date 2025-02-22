@@ -30,7 +30,6 @@ D_EXTEND("ibeep.com"
 	, CNAME("dn42.macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("macpro.pve", "dn42.macpro.pve.home.ibeep.com.")
 	, CNAME("macpro-pve.home", "dn42.macpro.pve.home.ibeep.com.")
-	, A("pve-5.pve", "192.168.1.5")
 
 	, A("oci-01.r", "132.145.193.131")
 
