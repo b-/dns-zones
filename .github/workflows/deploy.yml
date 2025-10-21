@@ -5,6 +5,9 @@ concurrency:
   cancel-in-progress: true
 on:
   merge_group:
+  pull_request:
+    types:
+      - auto_merge_enabled
 
 jobs:
   push:
@@ -18,7 +21,7 @@ jobs:
         #  version: 3.20.0 # `latest` by default, but you can set a specific version to install
 
       - name: Connect to Tailscale
-        uses: tailscale/github-action@v3
+        uses: tailscale/github-action@v4
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
